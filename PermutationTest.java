@@ -37,43 +37,44 @@ public class PermutationTest extends Applet
         Algorithm1 alg1 = new Algorithm1();
         Algorithm2 alg2 = new Algorithm2();
         Algorithm3 alg3 = new Algorithm3();
+        TimeInterval total = new TimeInterval();
 
-
+        total.startTiming();
         while(count < MAXLENGTH)
         {
-        	if(end == false)
-        	{
-	        	 t.startTiming();
-	             alg1.generate(n);
-	             t.endTiming();
-	             System.out.println("n: " + n);
-	             System.out.println("ElapsedTime: "+ t.getElapsedTime());
-	             dataAL.add((double) n);
-	             
-	             
-	             if(t.getElapsedTime() >= 30)
-	             {
-	            	 dataAL.add(30.0);
-	            	 end = true;
-	             }
-	             else
-	             {
-	            	 dataAL.add(t.getElapsedTime());
-	             }
+          if(end == false)
+          {
+             t.startTiming();
+               alg1.generate(n);
+               t.endTiming();
+               System.out.println("n: " + n);
+               System.out.println("ElapsedTime: "+ t.getElapsedTime());
+               dataAL.add((double) n);
+               
+               
+               if(t.getElapsedTime() >= 30)
+               {
+                 dataAL.add(30.0);
+                 end = true;
+               }
+               else
+               {
+                 dataAL.add(t.getElapsedTime());
+               }
              
              
-        	}
-        	else
-        	{
-        		System.out.println("n: " + n);
-        		System.out.println("ElapsedTime: 30");
-        		dataAL.add((double) n);
-        		dataAL.add(30.0);
-        	}
-        	 n = n* 2;
+          }
+          else
+          {
+            System.out.println("n: " + n);
+            System.out.println("ElapsedTime: 30");
+            dataAL.add((double) n);
+            dataAL.add(30.0);
+          }
+           n = n* 2;
              count++;
              
-        	
+          
         }
         
         d1 = convertALToArr(dataAL, d1);
@@ -84,39 +85,39 @@ public class PermutationTest extends Applet
         end = false;
         while(count < MAXLENGTH)
         {
-        	if(end == false)
-        	{
-	        	 t.startTiming();
-	             alg2.generate(n);
-	             t.endTiming();
-	             System.out.println("n: " + n);
-	             System.out.println("ElapsedTime: "+ t.getElapsedTime());
-	             dataAL.add((double) n);
-	             
-	             
-	             if(t.getElapsedTime() >= 30)
-	             {
-	            	 dataAL.add(30.0);
-	            	 end = true;
-	             }
-	             else
-	             {
-	            	 dataAL.add(t.getElapsedTime());
-	             }
+          if(end == false)
+          {
+             t.startTiming();
+               alg2.generate(n);
+               t.endTiming();
+               System.out.println("n: " + n);
+               System.out.println("ElapsedTime: "+ t.getElapsedTime());
+               dataAL.add((double) n);
+               
+               
+               if(t.getElapsedTime() >= 30)
+               {
+                 dataAL.add(30.0);
+                 end = true;
+               }
+               else
+               {
+                 dataAL.add(t.getElapsedTime());
+               }
              
              
-        	}
-        	else
-        	{
-        		System.out.println("n: " + n);
-        		System.out.println("ElapsedTime: 30");
-        		dataAL.add((double) n);
-        		dataAL.add(30.0);
-        	}
-        	 n = n* 2;
+          }
+          else
+          {
+            System.out.println("n: " + n);
+            System.out.println("ElapsedTime: 30");
+            dataAL.add((double) n);
+            dataAL.add(30.0);
+          }
+           n = n* 2;
              count++;
              
-        	
+          
         }
         
         d2 = convertALToArr(dataAL, d2);
@@ -127,39 +128,39 @@ public class PermutationTest extends Applet
         end = false;
         while(count < MAXLENGTH)
         {
-        	if(end == false)
-        	{
-	        	 t.startTiming();
-	             alg3.generate(n);
-	             t.endTiming();
-	             System.out.println("n: " + n);
-	             System.out.println("ElapsedTime: "+ t.getElapsedTime());
-	             dataAL.add((double) n);
-	             
-	             
-	             if(t.getElapsedTime() >= 30)
-	             {
-	            	 dataAL.add(30.0);
-	            	 end = true;
-	             }
-	             else
-	             {
-	            	 dataAL.add(t.getElapsedTime());
-	             }
+          if(end == false)
+          {
+             t.startTiming();
+               alg3.generate(n);
+               t.endTiming();
+               System.out.println("n: " + n);
+               System.out.println("ElapsedTime: "+ t.getElapsedTime());
+               dataAL.add((double) n);
+               
+               
+               if(t.getElapsedTime() >= 30)
+               {
+                 dataAL.add(30.0);
+                 end = true;
+               }
+               else
+               {
+                 dataAL.add(t.getElapsedTime());
+               }
              
              
-        	}
-        	else
-        	{
-        		System.out.println("n: " + n);
-        		System.out.println("ElapsedTime: 30");
-        		dataAL.add((double) n);
-        		dataAL.add(30.0);
-        	}
-        	 n = n* 2;
+          }
+          else
+          {
+            System.out.println("n: " + n);
+            System.out.println("ElapsedTime: 30");
+            dataAL.add((double) n);
+            dataAL.add(30.0);
+          }
+           n = n* 2;
              count++;
              
-        	
+          
         }
         
         d3 = convertALToArr(dataAL, d3);
@@ -167,7 +168,7 @@ public class PermutationTest extends Applet
     
         data1 = graph.loadDataSet(d1, d1.length/2);
         data1.linestyle = 1;
-        data1.linecolor   =  new Color(0,255,0);
+        data1.linecolor   =  new Color(0,0,0);
         data1.marker    = 1;
         data1.markerscale = 1;
         data1.markercolor = new Color(0,0,255);
@@ -211,17 +212,18 @@ public class PermutationTest extends Applet
         yaxis_left.setLabelFont(new Font("Helvetica",Font.PLAIN,15));
         yaxis_left.setTitleColor( new Color(0,0,255) );
       
-      
+        total.endTiming();
+        System.out.println("Total time used: " + total.getElapsedTime());
       }
       
       public static double[] convertALToArr(ArrayList<Double> al, double[] arr)
       {
-    	  arr = new double[al.size()];
+        arr = new double[al.size()];
           for(int i = 0; i < arr.length; i++ )
           {
-        	  
-	          	arr[i] = al.get(i);
-        	  
+            
+              arr[i] = al.get(i);
+            
           }
           
           return arr;
