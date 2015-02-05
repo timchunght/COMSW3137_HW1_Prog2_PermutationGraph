@@ -19,7 +19,7 @@ public class example1 extends Applet
       ArrayList<Double> dataAL = new ArrayList<Double>();
       double[] d1;
       double[] d2;
-      int MAXLENGTH = 15;
+      int MAXLENGTH = 18;
       boolean end = false;
 
       public void init() 
@@ -70,7 +70,7 @@ public class example1 extends Applet
         	{
         		System.out.println("n: " + n);
         		System.out.println("ElapsedTime: 30");
-        		dataAL.add(dataAL.get(dataAL.size()-1));
+        		dataAL.add((double) n);
         		dataAL.add(30.0);
         	}
         	 n = n* 2;
