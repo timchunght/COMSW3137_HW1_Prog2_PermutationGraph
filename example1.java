@@ -10,16 +10,17 @@ public class example1 extends Applet
       Graph2D graph;
       DataSet data1;
       DataSet data2;
+      DataSet data3;
       Axis    xaxis;
       Axis    yaxis_left;
       Axis    yaxis_right;
       int count = 0;
-      int n;
-      int np = 100000;
+      int n = 100;
       ArrayList<Double> dataAL = new ArrayList<Double>();
       double[] d1;
       double[] d2;
-      int MAXLENGTH = 18;
+      double[] d3;
+      int MAXLENGTH = 16;
       boolean end = false;
 
       public void init() 
@@ -36,11 +37,9 @@ public class example1 extends Applet
         TimeInterval t= new TimeInterval();
         Algorithm1 alg1 = new Algorithm1();
         Algorithm2 alg2 = new Algorithm2();
-       
-        
-        n = 100;
-        count = 0;
-        end = false;
+        Algorithm3 alg3 = new Algorithm3();
+
+
         while(count < MAXLENGTH)
         {
         	if(end == false)
@@ -125,6 +124,53 @@ public class example1 extends Applet
         
         d2 = convertALToArr(dataAL, d2);
         dataAL.clear();
+        
+        n = 100;
+        count = 0;
+        end = false;
+        while(count < MAXLENGTH)
+        {
+        	if(end == false)
+        	{
+	        	 t.startTiming();
+	             alg3.generate(n);
+	             t.endTiming();
+	             //double elapsedTime = t.getElapsedTime();
+	             System.out.println("n: " + n);
+	             System.out.println("ElapsedTime: "+ t.getElapsedTime());
+	             dataAL.add((double) n);
+	             
+	             
+	             if(t.getElapsedTime() >= 30)
+	             {
+	            	 dataAL.add(30.0);
+	            	 end = true;
+	             }
+	             else
+	             {
+	            	 dataAL.add(t.getElapsedTime());
+	             }
+             
+             
+        	}
+        	else
+        	{
+        		System.out.println("n: " + n);
+        		System.out.println("ElapsedTime: 30");
+        		dataAL.add((double) n);
+        		dataAL.add(30.0);
+        	}
+        	 n = n* 2;
+             count++;
+             
+        	
+        }
+        
+        d3 = convertALToArr(dataAL, d3);
+        dataAL.clear();
+        
+        
+        
         /**
         d1 = new double[al.size()];
         for(int k = 0; k < d1.length; k++ )
@@ -200,8 +246,17 @@ public class example1 extends Applet
         data2.marker    = 1;
         data2.markerscale = 1;
         data2.markercolor = new Color(0,0,255);
-        data2.legend(200,120,"Y=X*X, quadratic");
+        data2.legend(200,120,"Alg2");
         data2.legendColor(Color.black);
+
+        data3 = graph.loadDataSet(d3, d3.length/2);
+        data3.linestyle = 1;
+        data3.linecolor   =  new Color(255,0,255);
+        data3.marker    = 1;
+        data3.markerscale = 1;
+        data3.markercolor = new Color(0,0,255);
+        data3.legend(200,140,"Alg3");
+        data3.legendColor(Color.black);
 
         
        
@@ -209,7 +264,8 @@ public class example1 extends Applet
         xaxis = graph.createAxis(Axis.BOTTOM);
         xaxis.attachDataSet(data1);
         xaxis.attachDataSet(data2);
-        xaxis.setTitleText("N values");
+        xaxis.attachDataSet(data3);
+        xaxis.setTitleText("N number of values");
         xaxis.setTitleFont(new Font("TimesRoman",Font.PLAIN,20));
         xaxis.setLabelFont(new Font("Helvetica",Font.PLAIN,15));
 /*
@@ -219,7 +275,8 @@ public class example1 extends Applet
         yaxis_left = graph.createAxis(Axis.LEFT);
         yaxis_left.attachDataSet(data1);
         yaxis_left.attachDataSet(data2);
-        yaxis_left.setTitleText("T VALUES");
+        yaxis_left.attachDataSet(data3);
+        yaxis_left.setTitleText("Time in Seconds");
         yaxis_left.setTitleFont(new Font("TimesRoman",Font.PLAIN,20));
         yaxis_left.setLabelFont(new Font("Helvetica",Font.PLAIN,15));
         yaxis_left.setTitleColor( new Color(0,0,255) );
