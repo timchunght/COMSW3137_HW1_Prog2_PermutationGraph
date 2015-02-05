@@ -221,7 +221,6 @@ public class PermutationTest extends Applet
           {
         	  
 	          	arr[i] = al.get(i);
-	          	System.out.println(al.get(i));
         	  
           }
           
