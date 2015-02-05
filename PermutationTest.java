@@ -25,7 +25,7 @@ public class PermutationTest extends Applet
       public void init() 
       {
        
-        setSize(750, 750);
+        setSize(600, 600);
         graph = new Graph2D();
         graph.drawzero = false;
         graph.drawgrid = false;
